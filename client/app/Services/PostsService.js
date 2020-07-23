@@ -1,6 +1,6 @@
 import store from "../store.js";
 
-class ValuesService {}
+class PostsService { }
 
-const service = new ValuesService();
+const service = new PostsService();
 export default service;

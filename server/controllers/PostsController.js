@@ -1,10 +1,10 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
-import { valuesService } from "../services/ValueService";
+import { postsService } from "../services/PostsService";
 
-export class ValuesController extends BaseController {
+export class PostsController extends BaseController {
   constructor() {
-    super("api/values");
+    super("api/posts");
     this.router
       .get("", this.getAll)
       .post("", this.create);
