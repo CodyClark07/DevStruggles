@@ -47,6 +47,7 @@ class PostsService {
         }).catch(err => console.error(err))
     }
 
+
     getPosts() {
         _api.get("").then(res => {
             let posts = res.data.data.map(rawPostData => new Post(rawPostData))

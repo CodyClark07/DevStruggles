@@ -19,7 +19,6 @@ export default class PostsController {
     constructor() {
         _store.subscribe("posts", _draw)
     }
-
     addPost(event) {
         event.preventDefault();
         let form = event.target;
