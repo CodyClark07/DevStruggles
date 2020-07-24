@@ -18,3 +18,7 @@ header{
 #search{
     justify-content: right;
 }
+
+.overflow{
+    word-wrap: break-word;
+}

@@ -2,193 +2,192 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>DevStruggles</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DevStruggles</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-	<header class="container-fluid">
-		<div class="row mt-2" style="justify-content: space-between;">
-			<div class="col-2">
-				<button class="btn btn-md mb-1 btn-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-					aria-haspopup="true" aria-expanded="false">
-					<i class="fa fa-navicon xl text-light"></i>
-				</button>
-				<div class="dropdown-menu" onclick="app.categoryController.selectCategory(event.target.name)"
-					style="cursor:pointer" aria-labelledby="dropdownMenuButton" data-toggle="modal" data-target="#categoryModal">
-					<a class="dropdown-item" name="html">HTML</a>
-					<a class="dropdown-item" name="css">CSS</a>
-					<a class="dropdown-item" name="javascript">JavaScript</a>
-					<a class="dropdown-item" name="c#">C#</a>
-					<a class="dropdown-item" name="python">Python</a>
-					<a class="dropdown-item" name="misc">Misc.</a>
-				</div>
-			</div>
-			<div class="col-2">
-				<button class="btn btn-md btn-primary p-0 px-2 mt-1" type="button" id="" data-toggle="modal" data-target="#postModal"
-					aria-haspopup="true" aria-expanded="false">
-					Login
-				</button>
-			</div>
-			<div class="col-4 text-center">
-				<h3>DevStruggles.find(humor)</h3>
-			</div>
-			<div class="col-12 col-md-4">
-				<form class="form-inline my-2 mb-1 my-lg-0" style="justify-content: flex-end;">
-					<input class="form-control" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
-			</div>
-		</div>
-	</header>
-	<main>
+    <header class="container-fluid">
+        <div class="row mt-2 justify-content-center">
+            <div class="col-12 col-md-12 text-center">
+                <h5 class="overflow">DevStruggles.find(humor)</h5>
+            </div>
+            <div class="col-md-2 col-sm-2 float-right">
+            </div>
+        </div>
+        <div class="row justify-content-around p-1">
+            <div class="col-12 col-md-4">
+                <div class="dropdown-menu" onclick="app.categoryController.selectCategory(event.target.name)"
+                    style="cursor:pointer" aria-labelledby="dropdownMenuButton" data-toggle="modal"
+                    data-target="#categoryModal">
+                    <a class="dropdown-item" name="html">HTML</a>
+                    <a class="dropdown-item" name="css">CSS</a>
+                    <a class="dropdown-item" name="javascript">JavaScript</a>
+                    <a class="dropdown-item" name="c#">C#</a>
+                    <a class="dropdown-item" name="python">Python</a>
+                    <a class="dropdown-item" name="misc">Misc.</a>
+                </div>
+                <button class="btn btn-md btn-primary py-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-navicon xl text-light"></i>
+                </button>
+                <button class="btn btn-md btn-primary pb-1 py-2" type="button" id="" data-toggle="modal"
+                    data-target="#postModal" aria-haspopup="true" aria-expanded="false">
+                    CREATE POST
+                </button>
+                <button class="btn btn-md btn-primary p-2" type="button" id="" data-toggle="modal"
+                    data-target="#postModal" aria-haspopup="true" aria-expanded="false">
+                    Login
+                </button>
+            </div>
+            <div class="col-12 col-md-6">
+                <form class="form-inline my-2 mb-1 my-lg-0" style="justify-content: flex-end;">
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                </form>
+            </div>
+        </div>
+    </header>
+    <main>
 
-		<div class="col-4">
-			<button class="btn btn-md  btn-primary" type="button" id="" data-toggle="modal" data-target="#postModal"
-				aria-haspopup="true" aria-expanded="false">
-				CREATE POST
-			</button>
-		</div>
+        <div class="row p-3" id="posts">
+        </div>
 
-		<div class="row" id="posts">
+    </main>
 
-		</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script type="module" src="app/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <!-- The Category Modal -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="modal fade" id="categoryModal"></div>
+        </div>
+    </div>
 
+    <!-- The Post Form Modal -->
+    <div class="container-fluid">
+        <div class="row bg-dark text-warning">
+            <div class="modal fade" id="postModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content bg-dark">
 
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title col-12 text-center">CREATE NEW POST</h4>
+                        </div>
 
-	</main>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form class="needs-validation" novalidate>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
-	<script type="module" src="app/main.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
-		crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-	<!-- The Category Modal -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="modal fade" id="categoryModal"></div>
-		</div>
-	</div>
+                                <form class="needs-validation" novalidate>
+                                    <div class="form-row">
 
-	<!-- The Post Form Modal -->
-	<div class="container-fluid">
-		<div class="row bg-dark text-warning">
-			<div class="modal fade" id="postModal">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content bg-dark">
+                                        <div class="form-group col-12 text-center">
+                                            <label for="postComment">Comment</label>
+                                            <textarea class="form-control" name="postComment" rows="3"
+                                                required></textarea>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
 
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title col-12 text-center">CREATE NEW POST</h4>
-						</div>
+                                        <div class="form-group col-md-6 text-center">
+                                            <label for="postImageUrl">Image URL</label>
+                                            <input type="text" class="form-control" name="postImageUrl">
+                                        </div>
+                                        <div class="form-group col-md-4 text-center">
+                                            <label for="postTitle">Category</label>
+                                            <select name="postTitle" class="form-control custom-select" required>
+                                                <option selected disabled value="">Choose A Category</option>
+                                                <option value="html">HTML</option>
+                                                <option value="css">CSS</option>
+                                                <option value="javascript">JavaScript</option>
+                                                <option value="c#">C#</option>
+                                                <option value="python">Python</option>
+                                                <option value="misc">Misc</option>
+                                            </select>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">POST</button>
+                                </form>
+                        </div>
+                        <!-- Post Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-						<!-- Modal body -->
-						<div class="modal-body">
-							<form class="needs-validation" novalidate>
+    <!-- The Post Form Modal -->
+    <div class="container-fluid">
+        <div class="row bg-dark text-warning">
+            <div class="modal fade" id="loginModal">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content bg-dark">
 
-								<form class="needs-validation" novalidate>
-									<div class="form-row">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title col-12 text-center">Login Credentials</h4>
+                        </div>
 
-										<div class="form-group col-12 text-center">
-											<label for="postComment">Comment</label>
-											<textarea class="form-control" name="postComment" rows="3" required></textarea>
-											<div class="valid-feedback">
-												Looks good!
-											</div>
-										</div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group row">
+                                    <label for="staticUserName" class="col-sm-2 col-form-label">User Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control-plaintext" id="staticUserName"
+                                            value="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="form-group row">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="inputPassword" required>
+                                    </div>
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </form>
 
-										<div class="form-group col-md-6 text-center">
-											<label for="postImageUrl">Image URL</label>
-											<input type="text" class="form-control" name="postImageUrl">
-										</div>
-										<div class="form-group col-md-4 text-center">
-											<label for="postTitle">Category</label>
-											<select name="postTitle" class="form-control custom-select" required>
-												<option selected disabled value="">Choose A Category</option>
-												<option value="html">HTML</option>
-												<option value="css">CSS</option>
-												<option value="javascript">JavaScript</option>
-												<option value="c#">C#</option>
-												<option value="python">Python</option>
-												<option value="misc">Misc</option>
-											</select>
-											<div class="valid-feedback">
-												Looks good!
-											</div>
-										</div>
-									</div>
-									<button type="submit" class="btn btn-primary">POST</button>
-								</form>
-						</div>
-						<!-- Post Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-						</div>
-					</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- The Post Form Modal -->
-	<div class="container-fluid">
-		<div class="row bg-dark text-warning">
-			<div class="modal fade" id="loginModal">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content bg-dark">
-
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title col-12 text-center">Login Credentials</h4>
-						</div>
-
-						<!-- Modal body -->
-						<div class="modal-body">
-							<form>
-								<div class="form-group row">
-									<label for="staticUserName" class="col-sm-2 col-form-label">User Name</label>
-									<div class="col-sm-10">
-										<input type="text" class="form-control-plaintext" id="staticUserName" value="John Doe" required>
-									</div>
-								</div>
-								<div class="valid-feedback">
-									Looks good!
-								</div>
-								<div class="form-group row">
-									<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-									<div class="col-sm-10">
-										<input type="password" class="form-control" id="inputPassword" required>
-									</div>
-								</div>
-								<div class="valid-feedback">
-									Looks good!
-								</div>
-							</form>
-
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary">POST</button>
-					</form>
-				</div>
-				<!-- Post Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-			</div>
-			</form>
-		</div>
-	</div>
-	</div>
-	</div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">POST</button>
+                    </form>
+                </div>
+                <!-- Post Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
 
 
 

@@ -24,15 +24,15 @@ function _draw() {
 
   </div>
 </div>`
-  document.getElementById("categoryModal").innerHTML= modal;
+  document.getElementById("categoryModal").innerHTML = modal;
 }
 
 //Public
-export default class ValuesController {
+export default class CategoryController {
   constructor() {
     _store.subscribe("category", _draw);
   }
-  selectCategory(selection){
+  selectCategory(selection) {
     CategoryService.selectCategory(selection);
   }
 }

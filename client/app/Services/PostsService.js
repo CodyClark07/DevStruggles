@@ -3,7 +3,7 @@ import Post from "../Models/Post.js";
 
 // @ts-ignore
 const _api = axios.create({
-    baseURL: "",
+    baseURL: "//localhost:3000/api/posts",
     timeout: 10000
 })
 
@@ -17,7 +17,7 @@ class PostsService {
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.likes += 1;
 
-    //-----------find post in store and splice/insert/update post???
+        //-----------find post in store and splice/insert/update post???
         _api.put("/" + postId, likedPost).then(res => {
             let posts = _store.State.posts.map(p => {
                 if (p.id == postId) {
@@ -31,7 +31,7 @@ class PostsService {
         }).catch(err => console.error(err))
     }
 
-    dislikePost(postId){
+    dislikePost(postId) {
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.dislikes += 1;
         _api.put("/" + postId, likedPost).then(res => {
@@ -47,18 +47,18 @@ class PostsService {
         }).catch(err => console.error(err))
     }
 
-    // getPosts() {
-    //     _api.get("").then(res => {
-    //         console.log(res);
-    //         let posts = res.data.data.map(rawPostData => new Post(rawPostData))
-    //         _store.commit("posts", posts)
-    //     }).catch(err => console.error(err))
-    // }
-
     getPosts() {
-        let posts = _store.State.posts;
-       _store.commit("posts", posts)
+        _api.get("").then(res => {
+            console.log(res);
+            let posts = res.data.data.map(rawPostData => new Post(rawPostData))
+            _store.commit("posts", posts)
+        }).catch(err => console.error(err))
     }
+
+    // getPosts() {
+    //     let posts = _store.State.posts;
+    //     _store.commit("posts", posts)
+    // }
 
     deletePost(carId) {
         _api.delete("posts/" + carId).then(res => {

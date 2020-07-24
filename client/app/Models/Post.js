@@ -12,7 +12,7 @@ export default class Post {
 
   get Template() {
 
-  return `<div class="col-3 border rounded shadow bg-light">
+    return `<div class="col-12 col-md-3">
     <div class="card">
     <img src="${this.imgUrl}" class="card-img-top" alt="">
     <div class="card-body">
