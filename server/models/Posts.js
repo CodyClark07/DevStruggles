@@ -6,7 +6,7 @@ const Posts = new Schema(
     title: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
-    imgUrl: { type: Image, required: true },
+    imgUrl: { type: String, required: true },
     comments: { type: String, required: true },
     likes: { type: Number, required: true },
     dislikes: { type: Number, required: true }
