@@ -23,13 +23,15 @@ export default class PostsController {
     addPost(event) {
         event.preventDefault();
         let form = event.target;
-        let rawPostData = {
-            imgUrl: form.postImageUrl.value,
-            comment: form.postComment.value,
-            category: form.postTitle.value,
 
+        let user = _postsService.addPost(form);
+        if (!user) {
+            // @ts-ignore
+            $("#loginModal").modal("show")
+        } else {
+            // @ts-ignore
+            $("#postModal").modal("hide")
         }
-        _postsService.addPost(rawPostData);
         event.target.reset();
 
     }
@@ -63,6 +65,7 @@ export default class PostsController {
                 }
                 event.preventDefault();
                 form.classList.add('was-validated');
+                // @ts-ignore
                 app.postsController.addPost(event);
 
             }, false);

@@ -17,8 +17,12 @@ export default class Post {
     <div class="card">
     <img src="${this.imgUrl}" class="card-img-top" alt="">
     <div class="card-body">
-      <h5 class="card-title">${this.title}</h5>
-      <p class="card-text">${this.comment}</p>
+      <h5 class="card-title text-center">${this.title}</h5>
+       <div class="form-group col-12 text-center">
+          <textarea class="form-control" placeholder="Add a Comment..."  name="postComment" rows="3"></textarea>
+          <small onclick="">+</small>
+     </div>
+      <p class="card-text">${this.name}: ${this.comment}</p>
       <p class="card-text">
         <small class="text-capitalize">${this.name}</small>
         <small class="text-muted">&#x1F44D; ${this.likes}</small>
