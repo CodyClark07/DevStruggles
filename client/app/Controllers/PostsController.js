@@ -1,6 +1,7 @@
 import _postsService from '../Services/PostsService.js'
 import _store from '../store.js'
 
+
 // we need a blank template
 // we need the posts
 // we need the element to inject into
@@ -8,27 +9,28 @@ function _draw() {
     let template = ""
     console.log("draw ran");
     let posts = _store.State.posts
+    console.log();
     posts.forEach(post => template += post.Template)
-    document.getElementById("posts").innerHTML = template
+    document.getElementById("posts").innerHTML = template;
 }
+
 
 export default class PostsController {
     constructor() {
-        console.log("Hello from posts controller");
         _store.subscribe("posts", _draw)
     }
 
     addPost(event) {
         event.preventDefault();
-        let formData = event.target.postCategory.value;
-        console.log(formData);
-        // let rawPostData = {
-        //     //USER???
-        //     imgUrl: formData.imgUrl.value,
-        //     description: formData.description.value,
-        // }
-        // _postsService.addPost(rawPostData)
-        console.log(event.target)
+        let form = event.target;
+        let rawPostData = {
+            imgUrl: form.postImageUrl.value,
+            comment: form.postComment.value,
+            title: form.postTitle.value,
+        }
+        _postsService.addPost(rawPostData);
+        event.target.reset();
+
     }
 
     deletePost(postId) {
@@ -41,6 +43,7 @@ export default class PostsController {
     dislikePost(postId) {
         _postsService.dislikePost(postId)
     }
+
 
 }
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -57,9 +60,9 @@ export default class PostsController {
                     event.preventDefault();
                     event.stopPropagation();
                 }
+                event.preventDefault();
                 form.classList.add('was-validated');
-                // console.log(document.getElementById("postModal"))
-                window["app"].postController.addPost(event);
+                app.postsController.addPost(event);
 
             }, false);
         });
