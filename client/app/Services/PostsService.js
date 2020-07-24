@@ -49,7 +49,6 @@ class PostsService {
 
     getPosts() {
         _api.get("").then(res => {
-            console.log(res);
             let posts = res.data.data.map(rawPostData => new Post(rawPostData))
             _store.commit("posts", posts)
         }).catch(err => console.error(err))
@@ -66,21 +65,20 @@ class PostsService {
         }).catch(err => console.error(err))
     }
 
-    // addPost(rawPostData) {
-    //     debugger
-    //     _api.post("",new Post(rawPostData)).then(res => {
-    //         console.log("In Post Service",res);
-    //         this.getPosts()
-    //     }).catch(err => console.error(err))
-    // }
-
     addPost(rawPostData) {
-
-        let post = new Post(rawPostData)
-        _store.State.posts.push(post)
-        _store.commit("posts", _store.State.posts)
-
+        _api.post("", new Post(rawPostData)).then(res => {
+            console.log("In Post Service", res);
+            this.getPosts()
+        }).catch(err => console.error(err))
     }
+
+    // addPost(rawPostData) {
+
+    //     let post = new Post(rawPostData)
+    //     _store.State.posts.push(post)
+    //     _store.commit("posts", _store.State.posts)
+
+    // }
 }
 
 

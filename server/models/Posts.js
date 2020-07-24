@@ -7,13 +7,13 @@ const CommentSchema = new Schema({
 })
 const Posts = new Schema(
   {
-    title: { type: String, required: true },
-    name: { type: String, required: true },
-    description: { type: String, required: true },
+    title: { type: String, required: false },
+    name: { type: String, required: false },
+    description: { type: String, required: false },
     imgUrl: { type: String, required: true },
     comments: [{ type: CommentSchema }],
-    likes: { type: Number, required: true },
-    dislikes: { type: Number, required: true },
+    likes: { type: Number, required: false },
+    dislikes: { type: Number, required: false },
     category: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

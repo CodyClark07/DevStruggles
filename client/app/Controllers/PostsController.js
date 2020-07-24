@@ -26,7 +26,8 @@ export default class PostsController {
         let rawPostData = {
             imgUrl: form.postImageUrl.value,
             comment: form.postComment.value,
-            title: form.postTitle.value,
+            category: form.postTitle.value,
+
         }
         _postsService.addPost(rawPostData);
         event.target.reset();
