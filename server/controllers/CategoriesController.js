@@ -1,21 +1,31 @@
 import express from "express";
 import BaseController from "../utils/BaseController";
 import { categoriesService } from "../services/CategoriesService";
+import { postsService } from "../services/PostsService";
 
 export class CategoriesController extends BaseController {
     constructor() {
         super("api/categories");
         this.router
             .get("", this.getAll)
-            .get(":id/", this.getCategory)
+            .get("/:id", this.getCategory)
+            .get("/:id/posts", this.getPostByCategoryId)
+
             .post("", this.create)
-            .put(":id/", this.edit)
-            .delete(":id/", this.delete)
+            .put("/:id", this.edit)
+            .delete("/:id", this.delete)
     }
     async getCategory(req, res, next) {
         try {
             let category = await categoriesService.findById(req.params.id)
             res.send({ data: category, message: "got single Category" })
+        } catch (error) {
+            next(error)
+        }
+    }
+    async getPostByCategoryId(req, res, next) {
+        try {
+            return res.send(await postsService.find({ category: req.params.id }))
         } catch (error) {
             next(error)
         }
@@ -40,7 +50,7 @@ export class CategoriesController extends BaseController {
     async getAll(req, res, next) {
         try {
             let categories = await categoriesService.find()
-            res.send({ data: categories, message: "gots the Categorys" })
+            res.send({ data: categories, message: "gots the Categories" })
         } catch (error) {
             next(error);
         }

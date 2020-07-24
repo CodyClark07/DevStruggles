@@ -7,10 +7,10 @@ export class PostsController extends BaseController {
     super("api/posts");
     this.router
       .get("", this.getAll)
-      .get(":id/", this.getPost)
+      .get("/:id", this.getPost)
       .post("", this.create)
-      .put(":id/", this.edit)
-      .delete(":id/", this.delete)
+      .put("/:id", this.edit)
+      .delete("/:id", this.delete)
   }
 
   async getPost(req, res, next) {
