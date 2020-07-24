@@ -1,9 +1,12 @@
 import Post from './Models/Post.js';
+let postA = new Post({ name: "Birdman", comment: "Man, that dude looks like a bird...", title: "Birds Of Feather Stick Together", imgUrl: "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg",likes:23,dislikes:6})
 let _state = {
   /** @type string */
   category: "none",
+  /** @type string */
+  name: "",
   /** @type {Post[]} */
-  posts: []
+  posts: [postA]
 };
 
 /** Collection of listeners to be called based on keyed state changes
@@ -11,10 +14,8 @@ let _state = {
  */
 let _listeners = {
   category: [],
-  posts:[],
+  posts: [],
 };
-
-//NOTE You should not need to change the code from this point down
 
 /**
  * Validates the property string is defined in both the state and the listeners
