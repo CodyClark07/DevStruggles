@@ -9,7 +9,7 @@ export class PostsController extends BaseController {
       .get("", this.getAll)
       .post("", this.create);
   }
-  async getAll(_, res, next) {
+  async getAll(req, res, next) {
     try {
       return res.send(["value1", "value2"]);
     } catch (error) {
