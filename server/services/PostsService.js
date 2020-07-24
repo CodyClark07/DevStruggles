@@ -8,10 +8,10 @@ class PostsService {
   }
   async findById(id) {
     let posts = await dbContext.Posts.findById(id);
-    if (![posts]) {
+    if (!posts) {
       throw new BadRequest("Invalid Id");
     }
-    return [posts];
+    return posts;
   }
 }
 

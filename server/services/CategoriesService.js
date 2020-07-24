@@ -8,10 +8,10 @@ class CategoriesService {
     }
     async findById(id) {
         let categories = await dbContext.Categories.findById(id);
-        if (![categories]) {
+        if (!categories) {
             throw new BadRequest("Invalid Id");
         }
-        return [categories];
+        return categories;
     }
 }
 
