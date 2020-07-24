@@ -7,10 +7,10 @@ export class CategoriesController extends BaseController {
         super("api/categories");
         this.router
             .get("", this.getAll)
-            .get(":id/", this.getCategory)
+            .get("/:id", this.getCategory)
             .post("", this.create)
-            .put(":id/", this.edit)
-            .delete(":id/", this.delete)
+            .put("/:id", this.edit)
+            .delete("/:id", this.delete)
     }
     async getCategory(req, res, next) {
         try {
@@ -40,7 +40,7 @@ export class CategoriesController extends BaseController {
     async getAll(req, res, next) {
         try {
             let categories = await categoriesService.find()
-            res.send({ data: categories, message: "gots the Categorys" })
+            res.send({ data: categories, message: "gots the Categories" })
         } catch (error) {
             next(error);
         }
