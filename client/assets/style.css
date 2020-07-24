@@ -2,8 +2,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("./dev_background.jfif");
 }
-
 main {
     flex-grow: 1;
+}
+header{
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    color: yellow;
+    border-bottom: solid  blue;
+}
+#search{
+    justify-content: right;
 }

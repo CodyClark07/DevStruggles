@@ -1,4 +1,4 @@
-export default class Category {
+export default class Value {
     constructor(data) {
         this.title = data.title
     }
