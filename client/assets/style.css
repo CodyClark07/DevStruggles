@@ -23,3 +23,6 @@ header{
     word-wrap: break-word;
 }
 
+.cursor{
+    cursor: pointer;
+}
