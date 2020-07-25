@@ -60,8 +60,8 @@ class PostsService {
     //     _store.commit("posts", posts)
     // }
 
-    deletePost(carId) {
-        _api.delete("posts/" + carId).then(res => {
+    deletePost(postId) {
+        _api.delete("" + postId).then(res => {
             this.getPosts()
         }).catch(err => console.error(err))
     }
