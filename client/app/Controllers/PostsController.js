@@ -59,6 +59,12 @@ export default class PostsController {
     dislikePost(postId) {
         _postsService.dislikePost(postId)
     }
+    likeComment(postId, commentId) {
+        _postsService.likeComment(postId, commentId)
+    }
+    dislikeComment(postId, commentId) {
+        _postsService.dislikeComment(postId, commentId)
+    }
 
 
 }

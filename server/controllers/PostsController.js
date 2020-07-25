@@ -11,14 +11,24 @@ export class PostsController extends BaseController {
       .post("", this.create)
       .post("/:id/comments", this.addComment)
       .put("/:id", this.edit)
+      .put("/:id/comments/:commentId", this.editComment)
       .delete("/:id", this.delete)
-      .delete("/:id/person/:commentId", this.deleteComment)
+      .delete("/:id/comments/:commentId", this.deleteComment)
   }
 
   async getPost(req, res, next) {
     try {
       let post = await postsService.findById(req.params.id)
       res.send({ data: post, message: "got single post" })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async editComment(req, res, next) {
+    try {
+
+      res.send({ data: await postsService.editComment(req.params.id, req.params.commentId, req.body), message: "edited comment" })
     } catch (error) {
       next(error)
     }

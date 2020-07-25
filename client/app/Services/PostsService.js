@@ -69,6 +69,44 @@ class PostsService {
         }).catch(err => console.error(err))
     }
 
+    likeComment(postId, commentId) {
+        console.log("liked")
+        let post = _store.State.posts.find(post => post.id == postId)
+        let likedComment = post.comments.find(comment => comment.id == commentId)
+        likedComment.likes += 1;
+
+        //-----------find post in store and splice/insert/update post???
+        _api.put(postId + "/comments/" + commentId, likedComment).then(res => {
+            let posts = _store.State.posts.map(p => {
+                if (p.id == commentId) {
+                    // res.data.data is my updated post from the server with the new like
+                    return new Post(res.data.data)
+                } else {
+                    return new Post(p)
+                }
+            })
+            _store.commit("posts", posts)
+        }).catch(err => console.error(err))
+    }
+
+    dislikeComment(postId, commentId) {
+        console.log("dislike")
+        let post = _store.State.posts.find(post => post.id == postId)
+        let dislikedComment = post.comments.find(comment => comment.id == commentId)
+        dislikedComment.dislikes += 1;
+        _api.put(postId + "/comments/" + commentId, dislikedComment).then(res => {
+            let posts = _store.State.posts.map(c => {
+                if (c.id == commentId) {
+                    // res.data.data is my updated post from the server with the new like
+                    return new Post(res.data.data)
+                } else {
+                    return new Post(c)
+                }
+            })
+            _store.commit("posts", posts)
+        }).catch(err => console.error(err))
+    }
+
 
     getPosts() {
         _api.get("").then(res => {

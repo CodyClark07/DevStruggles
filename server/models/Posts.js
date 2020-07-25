@@ -3,8 +3,12 @@ const Schema = mongoose.Schema;
 
 const CommentSchema = new Schema({
   comment: { type: String, required: true },
-  user: { type: String, required: true }
-})
+  user: { type: String, required: true },
+  likes: { type: Number, required: false, default: 0 },
+  dislikes: { type: Number, required: false, default: 0 },
+},
+  { timestamps: true, toJSON: { virtuals: true } }
+);
 const Posts = new Schema(
   {
     title: { type: String, required: false },

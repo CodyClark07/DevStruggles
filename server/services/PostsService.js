@@ -2,6 +2,13 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class PostsService {
+  async editComment(id, commentId, body) {
+    return await dbContext.Posts.updateOne(
+      { _id: id, "comments._id": commentId },
+      { $set: { "comments.$.dislikes": body.dislikes, "comments.$.likes": body.likes } },
+      { new: true }
+    );
+  }
   async addComment(id, body) {
     return await dbContext.Posts.findByIdAndUpdate(
       { _id: id },
