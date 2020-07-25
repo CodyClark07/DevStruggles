@@ -3,7 +3,7 @@ import _store from "../store.js";
 
 //Private
 function _draw() {
-  console.log("in cat draw");
+  console.log("draw worked");
   let modal = `<div class="modal-dialog modal-xl">
   <div class="modal-content">
 
@@ -34,5 +34,6 @@ export default class CategoryController {
   }
   selectCategory(selection) {
     CategoryService.selectCategory(selection);
+    console.log(selection);
   }
 }

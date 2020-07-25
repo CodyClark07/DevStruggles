@@ -40,7 +40,7 @@ export class PostsController extends BaseController {
   }
   async getAll(req, res, next) {
     try {
-      let posts = await postsService.find()
+      let posts = await postsService.find(req.query)
       res.send({ data: posts, message: "gots the posts" })
     } catch (error) {
       next(error);
