@@ -5,14 +5,14 @@ class PostsService {
   async addComment(id, body) {
     return await dbContext.Posts.findByIdAndUpdate(
       { _id: id },
-      { $addToSet: { comment: body } },
+      { $addToSet: { comments: body } },
       { new: true }
     );
   }
   async deleteComment(postId, commentId) {
     return await dbContext.Posts.findByIdAndUpdate(
       { _id: postId },
-      { $pull: { comment: { _id: commentId } } },
+      { $pull: { comments: { _id: commentId } } },
       { new: true }
     );
   }

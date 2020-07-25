@@ -26,7 +26,7 @@ export default class PostsController {
         console.log(comment)
         if (!comment)
             return;
-        let user = _postsService.addComment(comment, postId)
+        let user = _postsService.addComment({ comment }, postId)
         if (!user) {
             // @ts-ignore
             $("#loginModal").modal("show")

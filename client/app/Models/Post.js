@@ -3,7 +3,9 @@ export default class Post {
   constructor(data) {
     this.id = data.id || data._id;
     this.category = data.category;
-    this.comment = data.comment || [];
+    if (data.comments) {
+      this.comments = data.comments;
+    }
     this.imgUrl = data.imgUrl || "No Image";
     this.likes = data.likes || 0;
     this.dislikes = data.dislikes || 0;
@@ -31,10 +33,10 @@ export default class Post {
     </div>
           
      </div>
-        <p class="card-text bg-secondary text-light text-center mb-0">${this.comment.length}&nbsp;COMMENTS</p>
+        <p class="card-text bg-secondary text-light text-center mb-0">${this.comments.length}&nbsp;COMMENTS</p>
       <div class="comments border bg-primary text-light pl-2 mt-0 " style="max-height:6rem; overflow:auto">
       `
-    this.comment.forEach(com => template += `<small class="" style="display:block; border-bottom:solid 1px black">${String(com)}</small>`);
+    this.comments.forEach(com => template += `<p class="" style="display:block; border-bottom:solid 1px black"><small>${com.user}</small>&nbsp; : &nbsp;<small>${com.comment}</small></p>`);
     template += `</div>
      
       <p class="card-text">

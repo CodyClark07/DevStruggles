@@ -18,11 +18,15 @@ class PostsService {
         if (!_store.State.name)
             return false;
         let commentedPost = _store.State.posts.find(post => post.id == postId);
-        commentedPost.comment.push(comment)
+        console.log(commentedPost)
+        // let com = { user: store.State.name, comment: comment, id: null }
+        // commentedPost.comments.push(com)
+        comment.user = store.State.name;
 
-        _api.post("", new Post(commentedPost)).then(res => {
+        _api.post(postId + "/comments", comment).then(res => {
             console.log("In Post Service", res);
-            this.getPosts()
+            this.getPosts();
+            console.log("in addcomment")
         }).catch(err => console.error(err))
         return true
     }
