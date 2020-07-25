@@ -12,8 +12,9 @@ main {
 header{
     background-color: black;
     font-family: 'Courier New', Courier, monospace;
-    color: yellow;
-    border-bottom: solid  blue;
+    color: green;
+    border-bottom: green solid 1px;
+    
 }
 #search{
     justify-content: right;
@@ -28,4 +29,8 @@ header{
 }
 .tac{
     text-align: center;
+}
+
+.likes{
+    margin-top: -18px;
 }

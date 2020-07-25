@@ -18,45 +18,42 @@
             <div class="col-12 col-md-12 text-center">
                 <h5 class="overflow cursor" onclick="window.location.reload()">DevStruggles.find(humor)</h5>
             </div>
-            <div class="col-md-2 col-sm-2 float-right">
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row p-3 justify-content-between">
-                <div class="col-12 col-md-4 ml-auto text-left">
-                    <div class="dropdown-menu" onclick="app.categoryController.selectCategory(event.target.name)"
-                        style="cursor:pointer" aria-labelledby="dropdownMenuButton" data-toggle="modal">
-                        <a class="dropdown-item" name="html">HTML</a>
-                        <a class="dropdown-item" name="css">CSS</a>
-                        <a class="dropdown-item" name="javascript">JavaScript</a>
-                        <a class="dropdown-item" name="c-sharp">C#</a>
-                        <a class="dropdown-item" name="misc">Misc.</a>
+            <div class="container-fluid">
+                <div class="row p-3 justify-content-between">
+                    <div class="col-12 col-md-4 ml-auto text-left">
+                        <div class="dropdown-menu" onclick="app.categoryController.selectCategory(event.target.name)"
+                            style="cursor:pointer" aria-labelledby="dropdownMenuButton" data-toggle="modal">
+                            <a class="dropdown-item" name="html">HTML</a>
+                            <a class="dropdown-item" name="css">CSS</a>
+                            <a class="dropdown-item" name="javascript">JavaScript</a>
+                            <a class="dropdown-item" name="c-sharp">C#</a>
+                            <a class="dropdown-item" name="misc">Misc.</a>
+                        </div>
+                        <button class="btn btn-md btn-outline-success py-2" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-navicon xl text-light"></i>
+                        </button>
                     </div>
-                    <button class="btn btn-md btn-primary py-2" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-navicon xl text-light"></i>
-                    </button>
+                    <div class="col-12 col-md-4 tac">
+                        <button class="btn btn-md btn-outline-success pb-1 py-2" type="button" id="" data-toggle="modal"
+                            data-target="#postModal" aria-haspopup="true" aria-expanded="false">
+                            CREATE POST
+                        </button>
+                    </div>
+                    <div class="col-12 col-md-4 ml-auto">
+                        <button class="btn btn-md btn-outline-success p-2 float-right" type="button" id=""
+                            data-toggle="modal" data-target="#loginModal" aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </button>
+                    </div>
                 </div>
-                <div class="col-12 col-md-4 tac">
-                    <button class="btn btn-md btn-primary pb-1 py-2" type="button" id="" data-toggle="modal"
-                        data-target="#postModal" aria-haspopup="true" aria-expanded="false">
-                        CREATE POST
-                    </button>
-                </div>
-                <div class="col-12 col-md-4 ml-auto">
-                    <button class="btn btn-md btn-primary p-2 float-right" type="button" id="" data-toggle="modal"
-                        data-target="#loginModal" aria-haspopup="true" aria-expanded="false">
-                        Login
-                    </button>
-                </div>
-            </div>
 
-        </div>
-        <!-- <div class="col-12 col-md-6">
+            </div>
+            <!-- <div class="col-12 col-md-6">
                 <form class="form-inline my-2 mb-1 my-lg-0" style="justify-content: flex-end;">
                     <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                     <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
-        </form>
+            </form>
         </div>
         </div>
     </header>
