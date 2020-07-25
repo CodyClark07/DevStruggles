@@ -9,8 +9,10 @@ export class PostsController extends BaseController {
       .get("", this.getAll)
       .get("/:id", this.getPost)
       .post("", this.create)
+      .post("/:id/comment", this.addComment)
       .put("/:id", this.edit)
       .delete("/:id", this.delete)
+      .delete("/:id/person/:commentId", this.deleteComment)
   }
 
   async getPost(req, res, next) {
@@ -21,6 +23,29 @@ export class PostsController extends BaseController {
       next(error)
     }
   }
+
+  async addComment(req, res, next) {
+    try {
+      let comment = await postsService.addComment(req.params.id, req.body);
+      if (comment) {
+        return res.send(comment);
+      }
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deleteComment(req, res, next) {
+    try {
+      let delComment = await postsService.deleteComment(req.params.id, req.params.commentId);
+      if (delComment) {
+        res.send("he gone");
+      }
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
   async delete(req, res, next) {
     try {

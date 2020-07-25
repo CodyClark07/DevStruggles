@@ -2,6 +2,21 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class PostsService {
+  async addComment(id, body) {
+    return await dbContext.Posts.findByIdAndUpdate(
+      { _id: id },
+      { $addToSet: { comment: body } },
+      { new: true }
+    );
+  }
+  async deleteComment(postId, commentId) {
+    return await dbContext.Posts.findByIdAndUpdate(
+      { _id: postId },
+      { $pull: { comment: { _id: commentId } } },
+      { new: true }
+    );
+  }
+
   async delete(id) {
     return await dbContext.Posts.findByIdAndDelete(id)
   }
