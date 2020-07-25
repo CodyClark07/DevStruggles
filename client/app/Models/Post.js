@@ -38,7 +38,7 @@ export default class Post {
       <div class="comments border bg-primary text-light pl-2 mt-0 " style="max-height:6rem; overflow:auto">
       `
     this.comments.forEach(com => template += `<p class="" style="display:block; border-bottom:solid 1px black"><small>${com.user}</small>&nbsp; : &nbsp;<small>${com.comment}</small> <small class="text-white" style="cursor:pointer" onclick="app.postsController.likeComment('${this.id}','${com.id}')">&#x1F44D; ${com.likes}</small>
-    <small class="text-white" style="cursor:pointer" onclick="app.postsController.dislikeComment('${this.id}','${com.id}')">&#x1F44E; ${com.dislikes}</small></p>`);
+    <small class="text-white" style="cursor:pointer" onclick="app.postsController.dislikeComment('${this.id}','${com.id}')">&#x1F44E; ${com.dislikes}</small><i class="fa fa-times text-danger cursor" aria-hidden="true" onclick="app.postsController.deleteComment('${this.id}', '${com.id}')"></i></p>`);
     template += `</div>
      
       <p class="card-text">

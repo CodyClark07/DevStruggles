@@ -48,7 +48,9 @@ export default class PostsController {
         event.target.reset();
 
     }
-
+    deleteComment(postId, commentId) {
+        _postsService.deleteComment(postId, commentId)
+    }
     deletePost(postId) {
         _postsService.deletePost(postId)
     }

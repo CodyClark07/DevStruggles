@@ -18,7 +18,7 @@ class PostsService {
   }
   async deleteComment(postId, commentId) {
     return await dbContext.Posts.findByIdAndUpdate(
-      { _id: postId },
+      { _id: postId, "comments._id": commentId },
       { $pull: { comments: { _id: commentId } } },
       { new: true }
     );
