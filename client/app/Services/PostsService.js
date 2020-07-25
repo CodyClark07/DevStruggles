@@ -14,6 +14,19 @@ class PostsService {
         this.getPosts()
     }
 
+    addComment(comment, postId) {
+        if (!_store.State.name)
+            return false;
+        let commentedPost = _store.State.posts.find(post => post.id == postId);
+        commentedPost.comment.push(comment)
+
+        _api.post("", new Post(commentedPost)).then(res => {
+            console.log("In Post Service", res);
+            this.getPosts()
+        }).catch(err => console.error(err))
+        return true
+    }
+
     likePost(postId) {
         console.log("liked")
         let likedPost = _store.State.posts.find(post => post.id == postId)
