@@ -15,11 +15,11 @@ export default class Post {
 
   get Template() {
 
-    let template = `<div class="col-12 col-md-3 ">
+    let template = /*html*/ `<div class="col-12 col-md-3 ">
     <div class="card my-1">
-    <button type="button" class="close text-right" onclick="app.postsController.deletePost('${this.id}')" aria-label="Close">
-  <span class="m-1" aria-hidden="true">&times;</span>
-</button>
+    <div class="text-right">
+    <i class="fa fa-times text-danger cursor" aria-hidden="true" onclick="app.postsController.deletePost('${this.id}')"></i>
+    </div>
     <img src="${this.imgUrl}" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title text-center">${this.title}</h5>
@@ -27,7 +27,7 @@ export default class Post {
       <form onsubmit="app.postsController.addComment(event,'${this.id}')">
        <div class="form-group col-12 text-center">
        <div class="input-group-prepend">
-       <input type="text" class="form-control" placeholder="Add a Comment..."  name="postComment"></input>
+       <input type="text" class="form-control" placeholder="Add a Comment..."  name="postComment">
     <button type="submit" class="input-group-text" id="inputGroup-sizing-sm">+</button>
     </form>
     </div>

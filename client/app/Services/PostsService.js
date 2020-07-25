@@ -9,6 +9,8 @@ const _api = axios.create({
 })
 
 
+
+
 class PostsService {
     constructor() {
         this.getPosts()
@@ -81,9 +83,28 @@ class PostsService {
     // }
 
     deletePost(postId) {
-        _api.delete("" + postId).then(res => {
-            this.getPosts()
-        }).catch(err => console.error(err))
+        // @ts-ignore
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                // @ts-ignore
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                _api.delete("" + postId).then(res => {
+                    this.getPosts()
+                }).catch(err => console.error(err))
+            }
+        })
     }
 
     addPost(form) {
