@@ -24,7 +24,11 @@ export default class Post {
     <img src="${this.imgUrl}" class="card-img-top" alt="">
     <div class="card-body">
       <h5 class="card-title text-center">${this.title}</h5>
-      <p class="card-text">${this.name}</p>
+      <p class="card-text">${this.name}</p> <p class="card-text">
+       
+      <small class="text-muted" style="cursor:pointer" onclick="app.postsController.likePost('${this.id}')">&#x1F44D; ${this.likes}</small>
+      <small class="text-muted" style="cursor:pointer" onclick="app.postsController.dislikePost('${this.id}')">&#x1F44E; ${this.dislikes}</small>
+    </p>
       <form onsubmit="app.postsController.addComment(event,'${this.id}')">
        <div class="form-group col-12 text-center">
        <div class="input-group-prepend">
@@ -41,11 +45,7 @@ export default class Post {
     <small class="text-white" style="cursor:pointer" onclick="app.postsController.dislikeComment('${this.id}','${com.id}')">&#x1F44E; ${com.dislikes}</small></p>`);
     template += `</div>
      
-      <p class="card-text">
-        <small class="text-capitalize">${this.name}</small>
-        <small class="text-muted" style="cursor:pointer" onclick="app.postsController.likePost('${this.id}')">&#x1F44D; ${this.likes}</small>
-        <small class="text-muted" style="cursor:pointer" onclick="app.postsController.dislikePost('${this.id}')">&#x1F44E; ${this.dislikes}</small>
-      </p>
+     
     </div>
     </div>
   </div>`
