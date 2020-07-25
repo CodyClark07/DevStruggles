@@ -15,6 +15,7 @@ class PostsService {
     }
 
     likePost(postId) {
+        console.log("liked")
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.likes += 1;
 
@@ -33,6 +34,7 @@ class PostsService {
     }
 
     dislikePost(postId) {
+        console.log("dislike")
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.dislikes += 1;
         _api.put("/" + postId, likedPost).then(res => {

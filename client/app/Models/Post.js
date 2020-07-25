@@ -31,8 +31,8 @@ export default class Post {
       <p class="card-text">${this.name}: ${this.comment}</p>
       <p class="card-text">
         <small class="text-capitalize">${this.name}</small>
-        <small class="text-muted">&#x1F44D; ${this.likes}</small>
-        <small class="text-muted">&#x1F44E; ${this.dislikes}</small>
+        <small class="text-muted" style="cursor:pointer" onclick="app.postsController.likePost('${this.id}')">&#x1F44D; ${this.likes}</small>
+        <small class="text-muted" style="cursor:pointer" onclick="app.postsController.dislikePost('${this.id}')">&#x1F44E; ${this.dislikes}</small>
       </p>
     </div>
     </div>
