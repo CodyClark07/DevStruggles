@@ -1,5 +1,6 @@
 import _postsService from '../Services/PostsService.js'
 import _store from '../store.js'
+import store from '../store.js';
 
 
 // we need a blank template
@@ -18,6 +19,20 @@ export default class PostsController {
     constructor() {
         _store.subscribe("posts", _draw)
     }
+
+    addComment(event, postId) {
+        event.preventDefault()
+        let comment = event.target.postComment.value;
+        console.log(comment)
+        if (!comment)
+            return;
+        let user = _postsService.addComment(comment, postId)
+        if (!user) {
+            // @ts-ignore
+            $("#loginModal").modal("show")
+        }
+    }
+
     addPost(event) {
         event.preventDefault();
         let form = event.target;
