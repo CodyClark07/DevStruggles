@@ -6,7 +6,7 @@ class PostsService {
     return await dbContext.Posts.findByIdAndDelete(id)
   }
   async edit(id, body) {
-    return await dbContext.Posts.findByIdAndUpdate(id, body, { upsert: true })
+    return await dbContext.Posts.findByIdAndUpdate(id, body, { new: true })
   }
   async create(body) {
     return await dbContext.Posts.create(body)

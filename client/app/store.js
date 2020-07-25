@@ -1,6 +1,4 @@
 import Post from './Models/Post.js';
-
-
 let postA = new Post({ name: "Birdman", comment: "Man, that dude looks like a bird...", title: "Birds Of Feather Stick Together", imgUrl: "https://cdn.pixabay.com/photo/2015/11/16/16/28/bird-1045954_1280.jpg", likes: 23, dislikes: 6 })
 let _state = {
   /** @type string */
@@ -15,6 +13,7 @@ let _state = {
  * @type {{[x:string]: function[]}}
  */
 let _listeners = {
+  name: [],
   category: [],
   posts: [],
 };
