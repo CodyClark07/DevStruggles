@@ -7,7 +7,6 @@ import _store from '../store.js'
 // we need the element to inject into
 function _draw() {
     let template = ""
-    console.log("draw ran");
     let posts = _store.State.posts
     console.log();
     posts.forEach(post => template += post.Template)

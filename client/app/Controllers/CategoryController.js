@@ -25,12 +25,13 @@ function _draw() {
   </div>
 </div>`
   document.getElementById("categoryModal").innerHTML = modal;
+
 }
 
 //Public
 export default class CategoryController {
   constructor() {
-    _store.subscribe("category", _draw);
+    _store.subscribe("posts", _draw);
   }
   selectCategory(selection) {
     CategoryService.selectCategory(selection);
