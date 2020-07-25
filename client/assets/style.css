@@ -34,3 +34,8 @@ header{
 .likes{
     margin-top: -18px;
 }
+
+.category:hover {
+    background-color: rgb(92, 184, 92);
+    opacity: 0.7;
+    }
