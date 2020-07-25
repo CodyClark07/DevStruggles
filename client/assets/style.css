@@ -26,3 +26,6 @@ header{
 .cursor{
     cursor: pointer;
 }
+.tac{
+    text-align: center;
+}
