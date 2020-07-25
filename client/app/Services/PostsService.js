@@ -1,5 +1,6 @@
 import _store from '../store.js'
 import Post from "../Models/Post.js";
+import store from '../store.js';
 
 // @ts-ignore
 const _api = axios.create({
@@ -14,6 +15,7 @@ class PostsService {
     }
 
     likePost(postId) {
+        console.log("liked")
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.likes += 1;
 
@@ -32,6 +34,7 @@ class PostsService {
     }
 
     dislikePost(postId) {
+        console.log("dislike")
         let likedPost = _store.State.posts.find(post => post.id == postId)
         likedPost.dislikes += 1;
         _api.put("/" + postId, likedPost).then(res => {
@@ -59,17 +62,27 @@ class PostsService {
     //     _store.commit("posts", posts)
     // }
 
-    deletePost(carId) {
-        _api.delete("posts/" + carId).then(res => {
+    deletePost(postId) {
+        _api.delete("" + postId).then(res => {
             this.getPosts()
         }).catch(err => console.error(err))
     }
 
-    addPost(rawPostData) {
+    addPost(form) {
+        if (!_store.State.name)
+            return false
+        let rawPostData = {
+            imgUrl: form.postImageUrl.value,
+            //comment: form.postComment.value,
+            category: form.postTitle.value,
+            name: store.State.name
+
+        }
         _api.post("", new Post(rawPostData)).then(res => {
             console.log("In Post Service", res);
             this.getPosts()
         }).catch(err => console.error(err))
+        return true
     }
 
     // addPost(rawPostData) {
