@@ -4,7 +4,7 @@ import store from '../store.js';
 
 // @ts-ignore
 const _api = axios.create({
-    baseURL: https://dev-struggles.herokuapp.com/api/posts",
+    baseURL: "https://dev-struggles.herokuapp.com/api/posts",
     timeout: 10000
 })
 
