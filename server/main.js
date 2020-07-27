@@ -6,13 +6,10 @@ const mongoose = require("mongoose")
 //create server & socketServer
 const app = express();
 const port = process.env.PORT || 3000;
+mongoose.connect(process.env.MONGODB_URI)
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/dev-struggles', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}
-)
+
 
 //Establish Socket
 Startup.ConfigureGlobalMiddleware(app);
