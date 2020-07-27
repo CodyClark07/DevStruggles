@@ -17,7 +17,7 @@ export default class Post {
   get Template() {
 
     let template = /*html*/ `<div class="col-12 col-md-3">
-    <div class="card my-1 bg-dark">
+    <div class="card my-1 bg-black">
     <div class="text-right rounded">
     <i class="fa fa-times text-danger cursor px-1" aria-hidden="true" onclick="app.postsController.deletePost('${this.id}')"></i>
     </div>

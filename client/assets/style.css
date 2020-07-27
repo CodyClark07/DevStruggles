@@ -39,3 +39,8 @@ header{
     background-color: rgb(92, 184, 92);
     opacity: 0.7;
     }
+
+    .bg-black{
+background-color: black;
+border: solid 1px rgb(92, 184, 92);;
+    }
