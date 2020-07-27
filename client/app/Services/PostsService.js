@@ -4,7 +4,7 @@ import store from '../store.js';
 
 // @ts-ignore
 const _api = axios.create({
-    baseURL: "//localhost:3000/api/posts",
+    baseURL: https://dev-struggles.herokuapp.com/api/posts",
     timeout: 10000
 })
 
@@ -149,8 +149,8 @@ class PostsService {
     deletePost(postId) {
         // @ts-ignore
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Did you not get enough comments or likes?',
+            text: "stick to your day job",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',

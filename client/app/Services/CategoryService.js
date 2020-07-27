@@ -3,7 +3,7 @@ import Post from "../Models/Post.js";
 
 // @ts-ignore
 const _api = axios.create({
-  baseURL: "//localhost:3000/api/posts",
+  baseURL: "https://dev-struggles.herokuapp.com/api/posts",
   timeout: 10000
 })
 
