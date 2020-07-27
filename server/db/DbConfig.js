@@ -12,7 +12,7 @@ mongoose.connection.on("open", () => {
 });
 
 export default class DbConnection {
-  static async connect(connectionstring = process.env.CONNECTION_STRING || "") {
+  static async connect(connectionstring = process.env.DATABASE_URI || "") {
     let status = 0;
     try {
       let status = await mongoose.connect(connectionstring);
